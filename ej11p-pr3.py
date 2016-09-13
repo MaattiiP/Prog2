@@ -1,4 +1,3 @@
-
 def bisiesto (mes):
     if mes % 400 == 0:
         return True
@@ -39,22 +38,25 @@ def diasTranscurridos(dia,mes,anio):
 
 
 def difTiempo(dia1,mes1,anio1,dia2,mes2,anio2):
-    if mes1 <= mes2:
-        difAnio = anio2 - anio1
-        sumaMeses = 0
-        for x in range (mes1 + 1,mes2):
-            sumaMeses += 1
-        if dia1 <= dia2:
-            difDias = dia2 - dia1
-        else:
-            difDias = dia
-
-
+	difAnio = 0
+	sumaMeses = 0
+	difDias = 0
+	if mes1 <= mes2:
+		difAnio = anio2 - anio1
+		sumaMeses = 0
+		for x in range (mes1 + 1,mes2):
+			sumaMeses += 1
+		if dia2 >= dia1:
+			sumaMeses += 1
+			if dia1 == dia2:
+				difDias = 0
+			else:
+				for x in range (dia1, dia2):
+					difDias += 1
+	print("Pasaron",difAnio,"años",sumaMeses,"meses",difDias,"dias")
 
 
 def aux():
-    print(diasTranscurridos(19,4,2016))
+    print(difTiempo(1,2,2016,20,1,2016))
 
 aux()
-
-#difTiempo (19,1,1998,9,9,2016)
